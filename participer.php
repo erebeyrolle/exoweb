@@ -1,5 +1,8 @@
-<?php include_once("./config.php"); 
+<?php 
+session_start();
+include_once("./config.php"); 
 //Initialisation des variables $_POST
+
 if (isset ($_POST['email'])
     && isset($_POST['lastname'])
     && isset($_POST['firstname']))   {
@@ -8,13 +11,20 @@ if (isset ($_POST['email'])
     $lastname = htmlspecialchars($_POST['lastname']);
     $firstname = htmlspecialchars($_POST['firstname']);
 
-    $file = fopen("/participants/$email".'txt', "w");
+    //Création du file avec email.txt pour nom
+    
+    $file = "participants/$email" . ".txt";
     $data = $email.';'.$lastname.';'.$firstname;
-    fwrite("$file", "$data");
-
+    if (file_exists($file)){
+        echo('Vous êtes déjà inscrit');
+    }   else    {
+    
+    fwrite(fopen($file,"w+"), $data);
+    fclose($file);
+    }
 }   else    {
-    echo('Les champs ne peuvent être vide');
-    header('Location:jeu.php');
+    echo('Les champs ne peuvent être vide !');
+    //header('Location:jeu.php');
 }
 ?>
 

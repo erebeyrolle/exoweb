@@ -1,9 +1,24 @@
 <?php 
 session_start();
-include_once("./config.php"); ?>
+include_once("./config.php"); 
+//Initialisation des variables $_POST
 
-<!DOCTYPE html>
+if (isset ($_POST['login'])
+    && isset($_POST['password']))    {
 
+    $login = htmlspecialchars($_POST['login']);
+    $password = htmlspecialchars($_POST['password']);
+    
+    }
+
+if (($login == 'admin') && ($password == 'hello'))
+    {
+    echo('Bonjour Admin, ceci est votre tableau de bord');
+    }   else    
+    {
+    header('Location:login.php');
+    }
+?>
 
 <html lang="fr">
     <head>
@@ -12,11 +27,14 @@ include_once("./config.php"); ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
         crossorigin="anonymous">
-    <title><?= constant("TITLE"); ?></title>
-    
+        <title><?= constant("TITLE2"); ?></title>
     </head>
 
 <body>
+    <?php
+    echo($email."\n".$lastname."\n".$firstname."\n");
+    ?>
+
 
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
@@ -28,6 +46,5 @@ include_once("./config.php"); ?>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" 
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" 
         crossorigin="anonymous"></script>
-
     </body>
 </html>

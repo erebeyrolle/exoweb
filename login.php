@@ -1,9 +1,8 @@
 <?php 
 session_start();
-include_once("./config.php"); ?>
+include_once("./config.php"); 
 
-<!DOCTYPE html>
-
+?>
 
 <html lang="fr">
     <head>
@@ -12,12 +11,23 @@ include_once("./config.php"); ?>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" 
         crossorigin="anonymous">
-    <title><?= constant("TITLE"); ?></title>
+    <title><?= constant("TITLE4"); ?></title>
     
     </head>
 
 <body>
-
+<form method="post" action="compte.php">
+    <div class="form-group">
+        <label for="exampleInputPassword1">Login</label>
+        <input type="text" name="login" class="form-control" id="exampleInputPassword1" placeholder="Login">
+    </div>
+    <div class="form-group">
+    <label for="exampleInputPassword1">Mot de passe</label>
+    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Mot de passe">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" 
         integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" 
